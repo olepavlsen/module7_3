@@ -17,10 +17,10 @@ class WordsFinder:
     def clean(self, list_of_words):
         self.list_of_words = list_of_words
         punc = [',', '.', '=', '!', '?', ';', ':', ' - ']
-        for ele in self.list_of_words:
-            if ele in punc:
-                s = self.list_of_words.replace(ele, "")
-                return s
+        for i in range(len(punc)):
+            if punc[i] in self.list_of_words:
+                self.list_of_words = self.list_of_words.replace(punc[i], "")
+        return self.list_of_words
 
     def find(self, word):
         found = dict()
@@ -41,11 +41,12 @@ class WordsFinder:
         return counted
 
 
+
 finder2 = WordsFinder('test_file.txt')
 print(finder2.get_all_words())  # Все слова
 print(finder2.find('TEXT'))  # 3 слово по счёту
 print(finder2.count('teXT')) # 4 слова teXT в тексте всего
-
+#
 # finder1 = WordsFinder('Walt Whitman - O Captain! My Captain!.txt',
 #                       'Rudyard Kipling - If.txt',
 #                       'Mother Goose - Monday’s Child.txt')
